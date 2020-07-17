@@ -17,60 +17,32 @@ size_t		ft_strlen(const char *s)
 	size_t i;
 
 	i = 0;
-	while (*s++)
+	while (s && *s++)
 		i++;
 	return (i);
 }
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
-{
-	char	*d;
-	char	*s;
-	size_t	i;
-
-	if (n && (dest || src))
-	{
-		i = 0;
-		d = (char *)dest;
-		s = (char *)src;
-		if (dest < src)
-			while (i++ < n)
-				*(d++) = *(s++);
-		else
-			while (i++ < n)
-				*(d + n - i) = *(s + n - i);
-	}
-	return (dest);
-}
-
-char	*ft_strdup(const char *s)
+char	*ft_copybuf(const char *s)
 {
 	unsigned char *t;
+	size_t len;
 
-	t = malloc(ft_strlen(s) + 1);
-	if (t)
-		return (ft_memmove(t, s, ft_strlen(s) + 1));
-	return (NULL);
+	len = ft_strlen(s) + 1;
+	if (!(t = malloc(len)))
+		return (NULL);
+	return (ft_memmove(t, s, len));
 }
 
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s && *s != c)
-		s++;
-	return (*s == c ? (char *)s : NULL);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_bufferjoin(char *s1, char *s2)
 {
 	char *c;
 	char *t;
+	char *bs1;
+	char *bs2;
 
-	if (!s1 && s2)
-		return (ft_strdup(s2));
-	if (s1 && !s2)
-		return (ft_strdup(s1));
-	c = s1 && s2 ? malloc(ft_strlen(s1) + ft_strlen(s2) + 1) : NULL;
+	bs1 = s1;
+	bs2 = s2;
+	c = s1 || s2 ? malloc(ft_strlen(s1) + ft_strlen(s2) + 1) : NULL;
 	if (c)
 	{
 		t = c;
@@ -80,5 +52,49 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			*t++ = *s2++;
 		*t = '\0';
 	}
+	free(bs1);
+	free(bs2);
+	bs1 = NULL;
+	bs2 = NULL;
 	return (c);
+}
+
+int		asdfasdf(char *dst, char *src, size_t dst_size, size_t start, size_t count)
+{
+	char *begin_src;
+
+	if(!(dst = malloc(sizeof(char) * (dst_size + 1))))
+		return (-1);
+	begin_src = src;
+	while(count--)
+	{
+		*dst++ = *(src + start);
+		src++;
+	}
+	*dst = '\0';
+	free(begin_src);
+	begin_src = NULL;
+}
+
+int		adjust_buf_line(char *temp, char *buf, char *buffer_remains, size_t linelen, size_t buflen)
+{
+	char *old;
+	char *bbuf;
+	char *beginold;
+	char *bbr;
+
+	bbuf = buf;
+	old = temp;
+	beginold = old;
+	if (!(temp = malloc(sizeof(char) * (ft_strlen(temp)) + linelen)
+	&& (buffer_remains = malloc(sizeof(char) * (buflen + 1)))))
+		return (-1);
+	bbr = buffer_remains;
+	while(*old)
+		*temp++ = *old++;
+	while(linelen--)
+		*temp++ = *buf++;
+	*temp = '\0';
+	free(beginold);
+	buffer_remains
 }

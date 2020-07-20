@@ -6,7 +6,7 @@
 /*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:16:38 by cbach             #+#    #+#             */
-/*   Updated: 2020/07/14 20:58:22 by cbach            ###   ########.fr       */
+/*   Updated: 2020/07/19 13:48:14 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,7 @@ size_t		ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_copybuf(const char *s)
-{
-	unsigned char *t;
-	size_t len;
-
-	len = ft_strlen(s) + 1;
-	if (!(t = malloc(len)))
-		return (NULL);
-	return (ft_memmove(t, s, len));
-}
-
-char	*ft_bufferjoin(char *s1, char *s2)
+char		*ft_bufferjoin(char *s1, char *s2)
 {
 	char *c;
 	char *t;
@@ -59,42 +48,30 @@ char	*ft_bufferjoin(char *s1, char *s2)
 	return (c);
 }
 
-int		asdfasdf(char *dst, char *src, size_t dst_size, size_t start, size_t count)
-{
-	char *begin_src;
-
-	if(!(dst = malloc(sizeof(char) * (dst_size + 1))))
-		return (-1);
-	begin_src = src;
-	while(count--)
-	{
-		*dst++ = *(src + start);
-		src++;
-	}
-	*dst = '\0';
-	free(begin_src);
-	begin_src = NULL;
-}
-
-int		adjust_buf_line(char *temp, char *buf, char *buffer_remains, size_t linelen, size_t buflen)
+int			adjust_buf_line(char *temp, char *buf, char *buffer_remains,
+size_t *linelen, size_t *buflen)
 {
 	char *old;
 	char *bbuf;
 	char *beginold;
-	char *bbr;
 
 	bbuf = buf;
 	old = temp;
 	beginold = old;
-	if (!(temp = malloc(sizeof(char) * (ft_strlen(temp)) + linelen)
-	&& (buffer_remains = malloc(sizeof(char) * (buflen + 1)))))
+	if (!((temp = malloc(sizeof(char) * (ft_strlen(temp) + *linelen + 1)))
+	&& (buffer_remains = malloc(sizeof(char) * (*buflen + 1)))))
 		return (-1);
-	bbr = buffer_remains;
-	while(*old)
+	while (*old)
 		*temp++ = *old++;
-	while(linelen--)
+	while ((*linelen)--)
 		*temp++ = *buf++;
 	*temp = '\0';
+	while (*buf)
+		*buffer_remains++ = *buf++;
+	*buffer_remains = '\0';
+	free(linelen);
+	free(buflen);
 	free(beginold);
-	buffer_remains
+	free(bbuf);
+	return (1);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/20 16:07:00 by cbach             #+#    #+#             */
-/*   Updated: 2020/07/20 18:46:31 by cbach            ###   ########.fr       */
+/*   Created: 2020/07/21 13:02:38 by cbach             #+#    #+#             */
+/*   Updated: 2020/07/21 17:12:51 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-char		*bufferjoin(char *s1, char *s2);
-void	*allocate(int size);
+int		str_len(char *s);
+char	*ft_strdup(char *s);
+int		destroy(void *p1, void *p2, void *p3, int status);
+int		str_line_len(char *s);
+char	*str_join(char *s1, char *s2, int length);
+int		read_line(int fd, char **line, char *buf, char **buffer_remains);
 int		get_next_line(int fd, char **line);
+
 #endif

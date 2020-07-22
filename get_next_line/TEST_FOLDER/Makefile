@@ -6,11 +6,11 @@
 #    By: cbach <cbach@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/10 13:44:31 by cbach             #+#    #+#              #
-#    Updated: 2020/07/21 17:11:49 by cbach            ###   ########.fr        #
+#    Updated: 2020/07/22 13:23:47 by cbach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS = -g -Wall -Wextra -Werror -D BUFFER_SIZE=32
+FLAGS = -g -Wall -Wextra -Werror -D BUFFER_SIZE=1
 
 all: clear compile run clear
 

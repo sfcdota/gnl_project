@@ -6,7 +6,7 @@
 /*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 13:02:38 by cbach             #+#    #+#             */
-/*   Updated: 2020/07/22 20:27:35 by cbach            ###   ########.fr       */
+/*   Updated: 2020/07/23 21:14:56 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # endif
 # include <unistd.h>
 # include <stdlib.h>
+
 int		str_len(const char *s);
 void	*ft_calloc(size_t n);
 char	*ft_strdup(char *s);

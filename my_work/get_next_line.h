@@ -3,25 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/24 21:03:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/06/04 11:16:16 by skarry           ###   ########.fr       */
+/*   Created: 2020/07/21 13:02:38 by cbach             #+#    #+#             */
+/*   Updated: 2020/07/23 21:14:56 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-# include <stdlib.h>
-# include <fcntl.h>
+# ifndef FD_MAX_COUNT
+#  define FD_MAX_COUNT 1024
+# endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 0
+# endif
 # include <unistd.h>
+# include <stdlib.h>
 
-void				*ft_calloc(size_t n, size_t b);
-int					get_next_line(int fd, char **line);
-char				*ft_strtosup(char const *s, size_t len);
-char				*ft_strchr(const char *s, int c);
-size_t				ft_strlen(const char *str);
-char				*ft_strjoin(char *s1, char *s2);
+int		str_len(const char *s);
+void	*ft_calloc(size_t n);
+char	*ft_strdup(char *s);
+int		destroy(void *p1, void *p2, void *p3, int status);
+int		str_line_len(const char *s);
+char	*str_join(char *s1, char *s2, int length);
+int		read_line(int fd, char **line, char *buf, char **buffer_remains);
+int		get_next_line(int fd, char **line);
 
 #endif

@@ -3,41 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaako <chaako@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/03 15:53:16 by chaako            #+#    #+#             */
-/*   Updated: 2020/06/05 12:15:43 by chaako           ###   ########.fr       */
+/*   Created: 2020/07/21 13:02:38 by cbach             #+#    #+#             */
+/*   Updated: 2020/07/23 21:17:43 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
-
-# include <stdlib.h>
-
+# ifndef FD_MAX_COUNT
+#  define FD_MAX_COUNT 1024
+# endif
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 0
 # endif
+# include <unistd.h>
+# include <stdlib.h>
 
-typedef struct	s_file
-{
-	size_t		buf_used_len;
-	char		*buf;
-	int			fd;
-}				t_file;
-
-typedef struct	s_files
-{
-	size_t		count;
-	t_file		*arr;
-}				t_files;
-
-int				get_next_line(int fd, char **line);
-void			*ft_memmove(void *dest, const void *src, size_t n);
-int				resize_mem(void **mem, size_t old_size, size_t new_size);
-/*
-**  Try to find file with such file descriptor. If unsuccessful - create new
-*/
-t_file			*get_file(int fd, t_files *file_arr);
+int		str_len(const char *s);
+void	*ft_calloc(size_t n);
+char	*ft_strdup(char *s);
+int		destroy(void *p1, void *p2, void *p3, int status);
+int		str_line_len(const char *s);
+char	*str_join(char *s1, char *s2, int length);
+int		read_line(int fd, char **line, char *buf, char **buffer_remains);
+int		get_next_line(int fd, char **line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 13:02:35 by cbach             #+#    #+#             */
-/*   Updated: 2020/07/22 17:44:13 by cbach            ###   ########.fr       */
+/*   Updated: 2020/07/23 21:17:19 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ int		destroy(void *p1, void *p2, void *p3, int status)
 		free(p3);
 		p3 = NULL;
 	}
-	if (status == -2)
-		status = 0;
 	return (status > 0 ? 1 : status);
 }
 
@@ -76,7 +74,7 @@ int		read_line(int fd, char **line, char *buf, char **buffer_remains)
 	int		index;
 
 	temp = NULL;
-	status = str_len(buf) > 0 ? 1 : 0;
+	status = str_len(buf);
 	while ((index = str_line_len(buf)) > 0)
 	{
 		if (!(temp = str_join(temp, buf, str_len(buf) + str_len(temp))))
@@ -98,9 +96,11 @@ int		get_next_line(int fd, char **line)
 	static char	*buffer_remains[FD_MAX_COUNT];
 	char		*buf;
 	int			status;
+	int			buf_size;
 
+	buf_size = BUFFER_SIZE;
 	status = 1;
-	if (fd > FD_MAX_COUNT || BUFFER_SIZE < 1 || read(fd, buffer_remains[fd], 0))
+	if (fd > FD_MAX_COUNT || buf_size < 1 || read(fd, buffer_remains[fd], 0))
 		status = -1;
 	if (buffer_remains[fd])
 	{
@@ -114,7 +114,7 @@ int		get_next_line(int fd, char **line)
 	}
 	else
 		status = read(fd,
-		buf = ft_calloc(sizeof(char) * (BUFFER_SIZE + 1)), BUFFER_SIZE);
+		buf = ft_calloc(sizeof(unsigned char) * (buf_size + 1)), buf_size);
 	return (status != -1 ? read_line(fd, line, buf, &buffer_remains[fd])
 	: destroy(buf, NULL, NULL, status));
 }

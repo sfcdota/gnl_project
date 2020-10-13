@@ -6,7 +6,7 @@
 /*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 13:02:35 by cbach             #+#    #+#             */
-/*   Updated: 2020/10/13 21:14:50 by cbach            ###   ########.fr       */
+/*   Updated: 2020/10/13 21:36:22 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,11 @@ int		get_next_line(int fd, char **line)
 	}
 	else
 		status = read(fd,
+<<<<<<< HEAD:get_next_line/get_next_line.c
 		buf = ft_calloc(sizeof(unsigned char), (buf_size + 1)), buf_size);
+=======
+		buf = ft_calloc(sizeof(unsigned char) * (buf_size + 1)), buf_size);
+>>>>>>> efecbf1dd405670eef10ba13fe41074e07ea4cc8:get_next_line.c
 	return (status != -1 ? read_line(fd, line, buf, &buffer_remains[fd])
 	: destroy(buf, NULL, NULL, status));
 }

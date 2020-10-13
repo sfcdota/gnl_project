@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 13:02:38 by cbach             #+#    #+#             */
-/*   Updated: 2020/07/22 17:45:03 by cbach            ###   ########.fr       */
+/*   Updated: 2020/10/13 21:36:22 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # ifndef FD_MAX_COUNT
 #  define FD_MAX_COUNT 1024
 # endif
@@ -21,11 +21,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-int		str_len(char *s);
-void	*ft_calloc(size_t n);
+int		str_len(const char *s);
+void	*ft_calloc(size_t n, size_t m);
 char	*ft_strdup(char *s);
 int		destroy(void *p1, void *p2, void *p3, int status);
-int		str_line_len(char *s);
+int		str_line_len(const char *s);
 char	*str_join(char *s1, char *s2, int length);
 int		read_line(int fd, char **line, char *buf, char **buffer_remains);
 int		get_next_line(int fd, char **line);

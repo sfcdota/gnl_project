@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 13:02:38 by cbach             #+#    #+#             */
-/*   Updated: 2020/10/13 21:26:08 by cbach            ###   ########.fr       */
+/*   Updated: 2020/07/23 21:17:43 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 # ifndef FD_MAX_COUNT
 #  define FD_MAX_COUNT 1024
 # endif
@@ -20,8 +20,9 @@
 # endif
 # include <unistd.h>
 # include <stdlib.h>
+
 int		str_len(const char *s);
-void	*ft_calloc(size_t n, size_t m);
+void	*ft_calloc(size_t n);
 char	*ft_strdup(char *s);
 int		destroy(void *p1, void *p2, void *p3, int status);
 int		str_line_len(const char *s);

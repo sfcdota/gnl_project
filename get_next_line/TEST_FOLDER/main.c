@@ -6,7 +6,7 @@
 /*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 13:51:46 by cbach             #+#    #+#             */
-/*   Updated: 2020/07/22 22:25:12 by cbach            ###   ########.fr       */
+/*   Updated: 2020/10/13 21:11:36 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 int main()
 {
-	int fd = open("test_file.txt", O_RDONLY);
+	int fd = open("i.cub", O_RDONLY);
 	char *line = NULL;
 	int status;
 	while ((status = get_next_line(fd, &line)) > 0)

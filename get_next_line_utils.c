@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbach <cbach@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cbach <cbach@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 22:02:22 by cbach             #+#    #+#             */
-/*   Updated: 2020/10/13 21:36:22 by cbach            ###   ########.fr       */
+/*   Updated: 2020/11/14 16:49:02 by cbach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		t = ft_memset(t, 0, size * nmemb);
 	return (t);
 }
-
 
 int		str_len(const char *s)
 {
